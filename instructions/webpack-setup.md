@@ -265,3 +265,11 @@ module.exports = {
     "lodash": "^4.17.20"
   }
 }
+
+## Make sure git knows about your subtree (the subfolder with your site).
+- git add dist && git commit -m "Initial dist subtree commit"
+
+
+## Use subtree push to send it to the gh-pages branch on GitHub.
+- git subtree push --prefix dist origin gh-pages
+- If your folder isn’t called dist, then you’ll need to change that in each of the commands above.
