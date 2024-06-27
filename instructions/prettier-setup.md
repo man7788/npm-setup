@@ -1,50 +1,70 @@
-## Install Prettier locally
-- npm install --save-dev --save-exact prettier
+# Using `Prettier` in `npm`
 
+## Getting Started
 
-## create an empty config file to let editors and other tools know you are using Prettier
-- echo {}> .prettierrc.json
+### Install Prettier locally
 
+```
+npm install --save-dev --save-exact prettier
+```
 
-## Create a .prettierignore file to let the Prettier CLI and editors know which files to not format
-- Base your .prettierignore on .gitignore and .eslintignore (if you have one)
-- If your project isn’t ready to format, say, HTML files yet, add \*.html
+### Create an empty config file to let editors and other tools know you are using Prettier
 
+```
+node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+```
 
-## Install “Prettier - Code formatter” Extension
+### Adjust .prettierrc.json to add rules
 
-
-## Adjust setting.json to use Prettier for only Javascript
-{
-  "[javascript]": {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
-}
-
-
-## Adjust setting.json to disable or enable auto format
-}
-"[javascript]": {
-"editor.formatOnSave": false
-}
-}
-
-
-## Install eslint-config-prettier
-- npm install --save-dev eslint-config-prettier
-
-
-## Add "prettier" to the "extends" array in your .eslintrc.\* file.
-## Make sure to put it last, so it gets the chance to override other configs.
-}
-  "extends": [
-    "some-other-config-you-use",
-    "prettier"
-  ]
-}
-
-
-## Adjust .prettierrc.json to add rules
+```
 {
   "singleQuote": true
 }
+```
+
+### Create a `.prettierignore` file to let the Prettier CLI and editors know which files to **_not_** format
+
+```
+# Ignore artifacts:
+build
+coverage
+```
+
+> Prettier will follow rules specified in .gitignore if it exists in the same directory from which it is run. You can also base your .prettierignore on .eslintignore (if you have one).
+
+> If your project isn’t ready to format, say, HTML files yet, add \*.html
+
+## `Prettier Formatter for Visual Studio Code` Extension
+
+## Install
+
+Install through VS Code extensions. Search for `Prettier - Code formatter`
+
+Can also be installed in VS Code: Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
+
+```
+ext install esbenp.prettier-vscode
+```
+
+## Default Formatter
+
+### Adjust `setting.json` to use Prettier as the default formatter
+
+```
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+### Adjust `setting.json` to enable auto format
+
+```
+{
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
+}
+```
